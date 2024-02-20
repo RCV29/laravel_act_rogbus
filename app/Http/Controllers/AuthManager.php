@@ -55,7 +55,7 @@ class AuthManager extends Controller
         }
         return redirect(route('login'))->with("success", "Registration Successful");
     }
-    }
+
 
     function logout(){
         
@@ -70,3 +70,31 @@ class AuthManager extends Controller
         return redirect(route('dashboard'));
 
     }
+
+    public function index(){
+        return User::with('expenses')->get(); // Changed 'credentials' to 'expenses'
+    }
+
+    public function store(Request $request){
+        $user = User::create($request->all());
+        if($request->has('expenses')){
+            $user->expenses()->createMany($request->input('expenses'));
+        }
+        return response()->json($user, 200); // Changed status code to 200
+    }
+
+    public function update(Request $request, $id){
+        $user = User::find($id);
+        $user->update($request->all());
+        return response()->json(['user' => $user]);
+    }
+
+    public function destroy($id){
+        $user = User::find($id);
+        $user->expenses()->delete();
+        $user->delete();
+        return response()->json(['message' => "successfully deleted data"]);
+    }
+}
+
+
