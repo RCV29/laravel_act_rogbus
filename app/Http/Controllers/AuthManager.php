@@ -55,6 +55,7 @@ class AuthManager extends Controller
         }
         return redirect(route('login'))->with("success", "Registration Successful");
     }
+    }
 
     function logout(){
         
@@ -62,4 +63,10 @@ class AuthManager extends Controller
         return redirect(route('login'));
 
     }
-}
+
+    function dashboard(){
+        
+        Auth::logout();
+        return redirect(route('dashboard'));
+
+    }
