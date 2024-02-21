@@ -32,7 +32,6 @@
                         </div>
                         <div class="mb-3">
                             <label for="registration" class="form-label"><a href="{{route('registration')}}">Register</a></label>
-                    
                         </div>
                         <div class="mb-3">
                             <div class="d-grid">

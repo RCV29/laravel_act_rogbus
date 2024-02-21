@@ -8,8 +8,13 @@
   </head>
   <body>
     @include('include.header')
-    @yield('content')
-    
+    <div class="mb-3">
+      <label for="login" class="form-label"><a href="{{route('login')}}">login</a></label>
+    </div>
+    <div class="mb-3">
+      <label for="registration" class="form-label"><a href="{{route('registration')}}">Register</a></label>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" ></script>
   </body>
 </html>
